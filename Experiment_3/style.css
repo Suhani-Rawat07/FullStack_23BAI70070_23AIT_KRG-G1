@@ -1,46 +1,75 @@
-// Sample product data
-const products = [
-  { id: 1, name: "Smartphone", category: "electronics", price: "$299", img: "https://via.placeholder.com/200x150?text=Smartphone" },
-  { id: 2, name: "Laptop", category: "electronics", price: "$899", img: "https://via.placeholder.com/200x150?text=Laptop" },
-  { id: 3, name: "Headphones", category: "electronics", price: "$49", img: "https://via.placeholder.com/200x150?text=Headphones" },
-  { id: 4, name: "T-Shirt", category: "clothing", price: "$19", img: "https://via.placeholder.com/200x150?text=T-Shirt" },
-  { id: 5, name: "Jeans", category: "clothing", price: "$39", img: "https://via.placeholder.com/200x150?text=Jeans" },
-  { id: 6, name: "Jacket", category: "clothing", price: "$79", img: "https://via.placeholder.com/200x150?text=Jacket" }
-];
-
-// DOM elements
-const filterSelect = document.getElementById("filter");
-const productsContainer = document.getElementById("products-container");
-
-// Function to render products
-function renderProducts(category) {
-  productsContainer.innerHTML = "";
-
-  let filteredProducts = category === "all" ? products : products.filter(p => p.category === category);
-
-  if (filteredProducts.length === 0) {
-    productsContainer.innerHTML = "<p>No products available.</p>";
-    return;
-  }
-
-  filteredProducts.forEach(product => {
-    const productCard = document.createElement("div");
-    productCard.classList.add("product-card");
-
-    productCard.innerHTML = `
-      <img src="${product.img}" alt="${product.name}">
-      <h3 class="product-name">${product.name}</h3>
-      <p class="product-price">${product.price}</p>
-    `;
-
-    productsContainer.appendChild(productCard);
-  });
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f5f5f5;
 }
 
-// Event listener for filter
-filterSelect.addEventListener("change", () => {
-  renderProducts(filterSelect.value);
-});
+/* Container */
+.product-filter-app {
+  max-width: 1000px;
+  margin: auto;
+}
 
-// Initial render
-renderProducts("all");
+/* Heading */
+.product-filter-app h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Filter Section */
+.filter-section {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+select {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Product List */
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* Individual Product Card */
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Product Image */
+.product-card img {
+  max-width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Product Name & Price */
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #333;
+}
+
+.product-price {
+  color: #28a745;
+  font-size: 14px;
+}
