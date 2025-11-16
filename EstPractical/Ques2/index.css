@@ -1,0 +1,15 @@
+.form {
+    border: 2px solid black;
+    margin: 0 auto;
+    padding: 2px;
+    width: 200px;
+}
+
+.register {
+    background-color: beige;
+    border: none;
+}
+
+.register:hover {
+    background-color: bisque;
+}
